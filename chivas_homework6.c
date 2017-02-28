@@ -12,6 +12,13 @@
  * =====================================================================================
  */
 #include <stdio.h>
+#include <stidlib.h>
+
+void Usage(void);
+void GetRec(double* x, double* y);
+void Polar(double x, double y, double *r, double * theta);
+void Showit(double radius, double angle);
+int Ask Question(void);
 
 int main()
 {
