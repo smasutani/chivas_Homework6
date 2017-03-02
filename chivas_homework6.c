@@ -12,17 +12,61 @@
  * =====================================================================================
  */
 #include <stdio.h>
-#include <stidlib.h>
+#include <stdlib.h>
+#include <math.h>
 
 void Usage(void);
 void GetRec(double* x, double* y);
-void Polar(double x, double y, double *r, double * theta);
+void Polar(double x, double y, double *r, double* theta);
 void Showit(double radius, double angle);
-int Ask Question(void);
+int AskQuestion(void);
 
 int main()
 {
-
+	GetRec(x, y);
+	Polar(x, y, &r, &theta);
+	Showit(radius, angle);
+	AskQuestion(void);
 	return 0;
 }
+
+
+void Usage(void)
+{
+
+}
+
+void GetRec(double* x, double* y)
+{
+	scanf("%lf %lf", &x, &y);
+	return;
+}
+
+void Polar(double x, double y, double *r, double* theta)
+{
+	r = sqrt (x * x + y * y);
+	theta = atan(y/x);
+	return;
+}
+void Showit(double radius, double angle)
+{
+	radius = r;
+	theta = angle;
+	printf("The value of radius is: %lf, and the value of angle is %lf.\n",
+			radius, angle);
+}
+
+int AskQuestion(void)
+{
+	int answer;
+	printf("Do you want to calculate again (Y/N)?\nY = 1, N = 0: ");
+	scanf("%d", &answer);
+	
+}
+
+
+
+
+
+
 
