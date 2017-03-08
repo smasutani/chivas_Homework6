@@ -23,24 +23,37 @@ void Polar(double x, double y, double *r, double* theta);
 void Showit(double radius, double angle);
 int AskQuestion(void);
 
-/* Main Function */
 int main(int argc, char *argv[])
 {
-	Usage();
-	double r, theta;
-	double* px, py, pr, ptheta; //creates a double for the addresses
-	
-	px = &x; //assigns the doubles to store addresses
-	py = &y;
-	pr = &r;
-	ptheta = &theta;
+        int answer;
+        double x,y,r,theta;
+        answer = 1;
 
-	GetRec(px, py);
-	Polar(px, py, pr, ptheta);
-	Showit(pradius, ptheta);
-	AskQuestion();
-	
-	return 0;
+        while((answer =1))
+        {
+                GetRec(&x,&y);
+
+                        //x = atof(x_str);
+                        //y = atof(y_str);
+                       if(x && y)
+                        {
+                                Polar(x,y,&r,&theta);
+                                Showit(r, theta);
+                                printf("Distance from origin: %f\n", r);
+                                printf("Angle (in degrees) from x-axis: %f\n", theta);
+                                AskQuestion(answer);
+                        }
+
+                        else
+                        {
+                        Usage();
+                        AskQuestion(answer);
+                        }
+                }
+
+
+
+        return 0;
 }
 
 /* Function Definitions */
@@ -62,30 +75,28 @@ void Usage(void)
 
 void GetRec(double* x, double* y)
 {
-	scanf("%lf %lf", &x, &y);
-	return;
+        printf("Enter the x coordinate: ");
+        scanf("%lf", x);
+        printf("Enter the y coordinate: ");
+        scanf("%lf", y);
+        return;
 }
 
 void Polar(double x, double y, double *r, double* theta)
 {
-	r = sqrt (x * x + y * y);
-	theta = atan(y/x);
-	return;
+        *r = sqrt (x * x + y * y);
+        *theta = atan(y/x);
+        return;
 }
 void Showit(double radius, double angle)
 {
-	radius = r;
-	theta = angle;
-	printf("The value of radius is: %lf, and the value of angle is %lf.\n",
-			radius, angle);
+        printf("The value of radius is: %lf, and the value of angle is %lf.\n",radius, angle);
+        return;
 }
 
-int AskQuestion(void)
+int AskQuestion(int answer)
 {
 	int answer;
-	printf("Do you want to calculate again (Y/N)?\nY = 1, N = 0: ");
-	scanf("%d", &answer);
-
 	if (answer != 0 && answer != 1)
 	{
 		printf("Bad input, try again.\n");
@@ -102,5 +113,6 @@ int AskQuestion(void)
 		return 0;
 	}
 }
+
 
 
