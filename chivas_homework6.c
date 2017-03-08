@@ -73,8 +73,7 @@ void Polar(double x, double y, double *r, double* theta)
 }
 void Showit(double radius, double angle)
 {
-	printf("The distance from the origin: %lf\n
-			The value of angle is %lf.\n", radius, angle);
+	printf("The distance from the origin: %lf\nThe value of angle is %lf.\n", radius, angle);
 	return;
 }
 
